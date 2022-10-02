@@ -8,7 +8,7 @@ To be added
 
 ## Overview
 
-Using `D3.js`, `css`, and `html` to make interactive visualizations
+Using `D3.js`, `css`, and `html` to make interactive visualizations that comply with aesthetics principles and are of high, publishing-level standards.  
 
 ## Use of Code (and Code Confidentiality)
-Code shall not be used for business use without the owner's permission.  
+Code shall not be disseminated for business uses without the owner's permission.  
