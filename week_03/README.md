@@ -8,7 +8,7 @@
 | Title | NIBRS 2021 DC data |
 | Agency | FBI (Federal Bureau of Investigation) |
 | Location | Washington, DC (refer to the data) |
-| Link | The dataset can be downloaded at the [FBI Crime Data Explorer](https://crime-data-explorer.app.cloud.gov/pages/downloads). <br \> On this page, go to Crime Incident-Based Data by State section, select DC in Location and 2021 in Year, and press Download. The same section also include instructions on scraping the data using Postgresql as well as an ER diagram that shows the relationships between different datasets.|
+| Link | The dataset can be downloaded at the [FBI Crime Data Explorer](https://crime-data-explorer.app.cloud.gov/pages/downloads). On this page, go to the Crime Incident-Based Data by State section, select DC in Location and 2021 in Year, and press Download. The same section also includes instructions on scraping the data using Postgresql as well as an ER diagram that shows the relationships between different datasets.|
   
 
 ## Data Description
@@ -41,7 +41,7 @@ The afreomentioned questions can be realized in the following way:
 | :---: | :---: | :---: |
 | Racial group| a summary table by variable `race_id`| bar chart or preferably, a waffle chart | 
 | Age group | a summary table by a new variable that comes from variable `age_id` |vertical stacked bar chart |
-| weapon involvement | a summary table by variable `weapon_id` | bubble chart or bar chart|
+| Weapon involvement | a summary table by variable `weapon_id` | bubble chart or bar chart|
 | Offense Type | a summary table by variable `offense_id` | lollipop chart or bar chart|
 
 ## Future Concerns
