@@ -4,7 +4,7 @@
 ## Dataset Information 
 
 | Info | Description |
-| :---: | :----------: |
+| :--- | :---------- |
 | Title | NIBRS 2021 DC data |
 | Agency | FBI (Federal Bureau of Investigation) |
 | Location | Washington, DC (refer to the data) |
@@ -42,7 +42,7 @@ The afreomentioned questions can be realized in the following way:
 | Racial group| a summary table by variable `race_id`| bar chart or preferably, a waffle chart | 
 | Age group | a summary table by a new variable that comes from variable `age_id` |vertical stacked bar chart |
 | Weapon involvement | a summary table by variable `weapon_id` | bubble chart or bar chart|
-| Offense Type | a summary table by variable `offense_id` | lollipop chart or bar chart|
+| Offense type | a summary table by variable `offense_id` | lollipop chart or bar chart|
 
 ## Future Concerns
 
