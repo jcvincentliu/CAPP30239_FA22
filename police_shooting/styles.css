@@ -1,6 +1,6 @@
 * {
     font-family: 'Work Sans',Arial, Helvetica, sans-serif;
-    background-color:darkmagenta;
+    background-color:darkred;
   }
 
 H1 { text-align: center }
@@ -40,3 +40,7 @@ H1 { text-align: center }
     margin-left: 60%;
     margin-right: 0.5cm;
 }
+
+/* .float-child.race {   
+  background-color: slategrey;
+} */         /*this works but it doesn't change the panel background color to grey*/
