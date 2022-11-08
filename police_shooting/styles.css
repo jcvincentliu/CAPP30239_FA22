@@ -1,0 +1,42 @@
+* {
+    font-family: 'Work Sans',Arial, Helvetica, sans-serif;
+    background-color:darkmagenta;
+  }
+
+H1 { text-align: center }
+
+.narrative {
+    margin-left: .5cm;
+    margin-right: .2cm;
+    overflow-y: scroll 
+}
+
+/* (in .narrative) max-width: 1300px;
+    height: 1400px; */
+
+
+/*body .narrative .race p{
+    background-color: aliceblue;
+}
+
+.narrative .race_narrative {
+    margin-left: ;
+} */
+
+.float-container {
+    border: 0px;
+    padding: 20px;
+}
+
+.float-child {
+    float: left;
+    padding: 20px;
+    border: 0px ;
+}  
+
+.float-child.race_narrative {
+  width: 40%;
+  /*  margin-top: 30em */
+    margin-left: 60%;
+    margin-right: 0.5cm;
+}

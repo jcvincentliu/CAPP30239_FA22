@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Police Killing</title>
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,600" rel="stylesheet">
+     <link rel="stylesheet" href="styles.css"> 
+</head>
+
+<body>
+    <div class = "narrative">
+        <h1>Police Killings in the United States in 2015</h1>
+        <h2>Introduction</h2>
+        <p>In the country that is famous for personal liberty and individualism, a virus is spreading. 
+            The virus does not have a concrete shape or form, and it infects people inconspicuously by 
+            creating fears and letting the blood spill with cold eyes. Some people call it the dedicated agent of <em>the New Jim Crow</em>,
+            and some, who refuse to stay silent, have relentlessly acted against it with courage. 
+            The virus has a common name of police killing.
+        </p>
+        <p>
+            In year 2015 alone, more than <b>1500</b> people lost their lives on the hands of police officers.
+            The Washington Post collected information about these 1500 people and incidents that led to their death
+            and conducted a series of data journalism works. For research purpose, I have scraped the 
+            <a href="https://github.com/tiffanyfrance/CAPP30239_FA22/blob/main/week_06/a3cleanedonly2015.json">data</a> 
+            from the website, which I have replicated some of the graphs with the goal of rethinking what happened 
+            in that year and what implications we can get from the loss.
+        </p>
+        <h2>xx Month has the highest count of police killings</h2>
+            <div id = "month"></div>
+            <div class="month_narrative">
+                <p><b>Narrative</b> Over the course of 2015, </p>
+                <p><b>Why line chart?</b>: A line chart is a solid choice to display information that is time related.
+                </p>
+                <p><b>Data points:</b> Date</p> <p><b>Supplementary information:</b> how to build interactions?</p>
+            </div>
+        <h2>African Americans are overrepresented in police killing victims</h2> 
+            <div class = "float-container">
+                <div class="float-child race" id="race"></div>
+                <div class="float-child race_narrative">
+                    <p><b>Narrative:</b> In year 2015, 378 out of 1537 victims murdered by police officers in the US were Blacks. This group,
+                        however, only represented 13ish % of the nation's population. Comparatively, half of the victims were
+                        Whites, the racial group that accounted for over 70% of the population. Police officers disproportionately 
+                        killed racial minorities (with the exception of Asian), but why?
+                    </p>
+                    <p><b>Why vertical bar chart?</b>: A bar chart is a solid choice to display information about groups.
+                        For this plot, I have one single mission in mind when creating it: showing the number of police
+                        killings by race. This make a horizontal/vertical bar chart appropriate (not the former because
+                        the number of categories is few). 
+                    </p>
+                    <p><b>Data points:</b> variable Race </p> <p><b>Supplementary information:</b> adding sex/state would be great</p>
+                </div>
+            </div>
+        <h2>Officers in xxx state killed the most people with mental disabilities</h2>
+        <div id="state_plus_mental_stacked"></div>
+        <p><b>Narrative:</b> In 2015, around xxx percent of people murdered by police officers in the state of xxx had some degrees
+        of mental disabilities. </p>
+        <p><b>Why stacked bar chart?</b>: To show proportion of different categories (mental disabilities) by another categorical variable (in this case, state).
+        As for this plot, a divergent bar chart wpi;dalso makes sense</p>
+        <p><b>Data points:</b> state, mental_illness</p> <p><b>Supplementary information:</b> how to build interactions?</p>
+        
+    </div>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="month.js"></script>
+    <script src="race_bar.js"></script>
+    <script src="state_mental_stacked.js"></script>
+</body>
+</html>
