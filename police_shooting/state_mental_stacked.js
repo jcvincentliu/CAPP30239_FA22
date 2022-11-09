@@ -1,6 +1,6 @@
 
-const width = 640,
-      height = 500,
+const width = 540,
+      height = 440,
       margin = {top: 30, right: 10, bottom: 30, left: 92};
 
 const dot_chart = d3.select("#race_weapon_cleverland")
