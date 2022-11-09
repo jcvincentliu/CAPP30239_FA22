@@ -91,7 +91,7 @@ for (let d of data) {
         xLabel: "",
         width: 660,
         height: 500,
-        colors: ["#feb24c", "#2c7fb8"]
+        colors: ["#8856a7", "#2c7fb8"]
       });
 
     document.getElementById("age_mental").appendChild(race_chart);
@@ -225,7 +225,7 @@ function StackedBarChart(data, {
     legendGroup
       .append("text")
       .attr("x", (d, i) => (20 + (i * 75)))
-      .attr("y",17)
+      .attr("y",10)
       .text((d, i) => ["With", "Without"][i]);
 
   return Object.assign(svg.node(), {scales: {color}});

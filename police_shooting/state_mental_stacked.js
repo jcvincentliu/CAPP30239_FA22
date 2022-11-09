@@ -124,4 +124,26 @@ var y = d3.scaleBand()
       .attr("cy", function(d) { return y(d.Race); })
       .attr("r", "9")
       .style("fill", "#12719e")
+    
+
+  let legendGroup = dot_chart
+      .selectAll(".legend-group")
+      .data(["Unarmed", "Armed"])
+      .join("g")
+      .attr("class", "legend-group");
+
+  const dot_colors =  d3.scaleOrdinal(["Unarmed", "Armed"], ["#a2d4ec","#12719e"])
+
+  legendGroup
+      .append("circle")
+      .attr("cx", (d, i) => (400 + (i * 80)))
+      .attr("cy",300)
+      .attr("r", 8)
+      .attr("fill", (d, i) => dot_colors(i));
+  
+    legendGroup
+      .append("text")
+      .attr("x", (d, i) => (390 + (i * 75)))
+      .attr("y",330)
+      .text((d, i) => ["Unarmed  ", "  Armed"][i]); 
 })
