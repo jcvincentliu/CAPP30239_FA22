@@ -1,122 +1,127 @@
 
+const width = 640,
+      height = 500,
+      margin = {top: 30, right: 10, bottom: 30, left: 92};
+
+const dot_chart = d3.select("#race_weapon_cleverland")
+  .append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform",
+          "translate(" + margin.left + "," + margin.top + ")")
 
 
+d3.json('a3cleanedonly2015.json').then(data => { 
 
+  let weapon_race = [
+    {
+        "Race": "White",
+        "Total_unarmed": 0,
+        "Total_armed":0
+    },
+    {
+        "Race": "Black",
+        "Total_unarmed": 0,
+        "Total_armed":0
+    },
+    {
+        "Race": "Hispanic",
+        "Total_unarmed": 0,
+        "Total_armed":0
+    },
+    {
+        "Race": "Asian",
+        "Total_unarmed": 0,
+        "Total_armed":0
+    },
+    {
+      "Race": "Other race",
+      "Total_unarmed": 0,
+      "Total_armed":0
+  }]
 
-
-// Copyright 2021 Observable, Inc.
-// Released under the ISC license.
-// https://observablehq.com/@d3/stacked-normalized-horizontal-bar
-function StackedBarChart(data, {
-    x = d => d, // given d in data, returns the (quantitative) x-value
-    y = (d, i) => i, // given d in data, returns the (ordinal) y-value
-    z = () => true, // given d in data, returns the (categorical) z-value
-    title, // given d in data, returns the title text
-    marginTop = 30, // top margin, in pixels
-    marginRight = 20, // right margin, in pixels
-    marginBottom = 0, // bottom margin, in pixels
-    marginLeft = 40, // left margin, in pixels
-    width = 640, // outer width, in pixels
-    height, // outer height, in pixels
-    xType = d3.scaleLinear, // type of x-scale
-    xDomain, // [xmin, xmax]
-    xRange = [marginLeft, width - marginRight], // [left, right]
-    yDomain, // array of y-values
-    yRange, // [bottom, top]
-    yPadding = 0.1, // amount of y-range to reserve to separate bars
-    zDomain, // array of z-values
-    offset = d3.stackOffsetExpand, // stack offset method
-    order = d3.stackOrderNone, // stack order method
-    xFormat = "%", // a format specifier string for the x-axis
-    xLabel, // a label for the x-axis
-    colors = d3.schemeTableau10, // array of colors
-  } = {}) {
-    // Compute values.
-    const X = d3.map(data, x);
-    const Y = d3.map(data, y);
-    const Z = d3.map(data, z);
-  
-    // Compute default y- and z-domains, and unique them.
-    if (yDomain === undefined) yDomain = Y;
-    if (zDomain === undefined) zDomain = Z;
-    yDomain = new d3.InternSet(yDomain);
-    zDomain = new d3.InternSet(zDomain);
-  
-    // Omit any data not present in the y- and z-domains.
-    const I = d3.range(X.length).filter(i => yDomain.has(Y[i]) && zDomain.has(Z[i]));
-  
-    // If the height is not specified, derive it from the y-domain.
-    if (height === undefined) height = yDomain.size * 25 + marginTop + marginBottom;
-    if (yRange === undefined) yRange = [height - marginBottom, marginTop];
-  
-    // Compute a nested array of series where each series is [[x1, x2], [x1, x2],
-    // [x1, x2], …] representing the x-extent of each stacked rect. In addition,
-    // each tuple has an i (index) property so that we can refer back to the
-    // original data point (data[i]). This code assumes that there is only one
-    // data point for a given unique y- and z-value.
-    const series = d3.stack()
-        .keys(zDomain)
-        .value(([, I], z) => X[I.get(z)])
-        .order(order)
-        .offset(offset)
-      (d3.rollup(I, ([i]) => i, i => Y[i], i => Z[i]))
-      .map(s => s.map(d => Object.assign(d, {i: d.data[1].get(s.key)})));
-  
-    // Compute the default y-domain. Note: diverging stacks can be negative.
-    if (xDomain === undefined) xDomain = d3.extent(series.flat(2));
-  
-    // Construct scales, axes, and formats.
-    const xScale = xType(xDomain, xRange);
-    const yScale = d3.scaleBand(yDomain, yRange).paddingInner(yPadding);
-    const color = d3.scaleOrdinal(zDomain, colors);
-    const xAxis = d3.axisTop(xScale).ticks(width / 80, xFormat);
-    const yAxis = d3.axisLeft(yScale).tickSizeOuter(0);
-  
-    // Compute titles.
-    if (title === undefined) {
-      title = i => `${Y[i]}\n${Z[i]}\n${X[i].toLocaleString()}`;
+for (let d of data) {
+    if (d.Armed == "" || d.Armed == "Unarmed") {
+      if (d.Race == "White") {
+      weapon_race[0].Total_unarmed += 1
+    } else if (d.Race == "Black") {
+      weapon_race[1].Total_unarmed += 1
+    } else if (d.Race == "Hispanic") {
+      weapon_race[2].Total_unarmed += 1
+    }  else if (d.Race == "Asian") {
+      weapon_race[3].Total_unarmed += 1
     } else {
-      const O = d3.map(data, d => d);
-      const T = title;
-      title = i => T(O[i], i, data);
+      weapon_race[4].Total_unarmed += 1
+    } 
+  } else {
+    if (d.Race == "White") {
+      weapon_race[0].Total_armed += 1
+    } else if (d.Race == "Black") {
+      weapon_race[1].Total_armed += 1
+    } else if (d.Race == "Hispanic") {
+      weapon_race[2].Total_armed += 1
+    }  else if (d.Race == "Asian") {
+      weapon_race[3].Total_armed += 1
+    } else {
+      weapon_race[4].Total_armed += 1
+    } 
     }
-    
-    const svg = d3.create("svg")
-        .attr("width", width)
-        .attr("height", height)
-        .attr("viewBox", [0, 0, width, height])
-        .attr("style", "max-width: 100%; height: auto; height: intrinsic;");
-  
-    const bar = svg.append("g")
-      .selectAll("g")
-      .data(series)
-      .join("g")
-        .attr("fill", ([{i}]) => color(Z[i]))
-      .selectAll("rect")
-      .data(d => d)
-      .join("rect")
-        .attr("x", ([x1, x2]) => Math.min(xScale(x1), xScale(x2)))
-        .attr("y", ({i}) => yScale(Y[i]))
-        .attr("width", ([x1, x2]) => Math.abs(xScale(x1) - xScale(x2)))
-        .attr("height", yScale.bandwidth());
-  
-    if (title) bar.append("title")
-        .text(({i}) => title(i));
-  
-    svg.append("g")
-        .attr("transform", `translate(0,${marginTop})`)
-        .call(xAxis)
-        .call(g => g.select(".domain").remove())
-        .call(g => g.append("text")
-            .attr("x", width - marginRight)
-            .attr("y", -22)
-            .attr("fill", "currentColor")
-            .attr("text-anchor", "end")
-            .text(xLabel));
-  
-    svg.append("g")
-        .attr("transform", `translate(${xScale(0)},0)`)
-        .call(yAxis);
-  
-    return Object.assign(svg.node(), {scales: {color}});
-  }
+  } 
+
+ // console.log(weapon_race)
+
+var x = d3.scaleLinear()
+    .domain([0, 500])
+    .range([ 0, width]);
+  dot_chart.append("g")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(x))
+
+  // Y axis
+var y = d3.scaleBand()
+    .range([ 0, height ])
+    .domain(weapon_race.map(function(d) { return d.Race; }))
+    .padding(1);
+  dot_chart.append("g")
+    .call(d3.axisLeft(y))
+
+  dot_chart.append("text") // add title
+    .attr("x", width / 1.9) // x location 
+    .attr("y", (margin.top / 3) * 1.5) // y location
+    .attr("text-anchor", "middle")
+    .text("Fig 2: Number of armed vs unarmed victims by race") // title
+    .style("font-size", "20px")
+
+  // Lines
+  dot_chart.selectAll("myline")
+    .data(weapon_race)
+    .enter()
+    .append("line")
+      .attr("x1", function(d) { return x(d.Total_unarmed); })
+      .attr("x2", function(d) { return x(d.Total_armed); })
+      .attr("y1", function(d) { return y(d.Race); })
+      .attr("y2", function(d) { return y(d.Race); })
+      .attr("stroke", "black")
+      .attr("stroke-width", "4px")
+
+  // Circles of variable 1
+  dot_chart.selectAll("mycircle")
+    .data(weapon_race)
+    .enter()
+    .append("circle")
+      .attr("cx", function(d) { return x(d.Total_unarmed); })
+      .attr("cy", function(d) { return y(d.Race); })
+      .attr("r", "9")
+      .style("fill", "#a2d4ec")
+
+  // Circles of variable 2
+  dot_chart.selectAll("mycircle")
+    .data(weapon_race)
+    .enter()
+    .append("circle")
+      .attr("cx", function(d) { return x(d.Total_armed); })
+      .attr("cy", function(d) { return y(d.Race); })
+      .attr("r", "9")
+      .style("fill", "#12719e")
+})

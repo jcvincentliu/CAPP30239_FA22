@@ -12,60 +12,89 @@
 <body>
     <div class = "narrative">
         <h1>Police Killings in the United States in 2015</h1>
-        <h2>Introduction</h2>
-        <p>In the country that is famous for personal liberty and individualism, a virus is spreading. 
-            The virus does not have a concrete shape or form, and it infects people inconspicuously by 
-            creating fears and letting the blood spill with cold eyes. Some people call it the dedicated agent of <em>the New Jim Crow</em>,
-            and some, who refuse to stay silent, have relentlessly acted against it with courage. 
-            The virus has a common name of police killing.
+        <u>
+            <h2>Introduction</h2>
+        </u>
+        <p>In the country that is famous for personal liberty and individualism, a deadly virus spreads. 
+            The virus has no shape or form but is ubiquitious in every ground of the nation. It infects people inconspicuously 
+            by eating on people's fears and tears. It has a special preference for racial minorties and those already suffered. 
+            Some people call it the dedicated agent of <em>the "New" Jim Crow</em> and hate it like hating the most
+            unlikeable indivudals they know. When tensions cooled down after the breakout, some accpeted it, complied with it, and forgot it.
+            Some, on the other hand, refuse to stay silent, and they fight against it with their courage and power. 
+            The country is the United States, and the virus is police killing of civilians.
         </p>
         <p>
             In year 2015 alone, more than <b>1500</b> people lost their lives on the hands of police officers.
             The Washington Post collected information about these 1500 people and incidents that led to their death
-            and conducted a series of data journalism works. For research purpose, I have scraped the 
+            and conducted a series of data journalism works. For research purpose, I acquired the 
             <a href="https://github.com/tiffanyfrance/CAPP30239_FA22/blob/main/week_06/a3cleanedonly2015.json">data</a> 
-            from the website, which I have replicated some of the graphs with the goal of rethinking what happened 
-            in that year and what implications we can get from the loss.
-        </p>
-        <h2>xx Month has the highest count of police killings</h2>
-            <div id = "month"></div>
-            <div class="month_narrative">
-                <p><b>Narrative</b> Over the course of 2015, </p>
-                <p><b>Why line chart?</b>: A line chart is a solid choice to display information that is time related.
-                </p>
-                <p><b>Data points:</b> Date</p> <p><b>Supplementary information:</b> how to build interactions?</p>
-            </div>
-        <h2>African Americans are overrepresented in police killing victims</h2> 
-            <div class = "float-container">
-                <div class="float-child race" id="race"></div>
-                <div class="float-child race_narrative">
-                    <p><b>Narrative:</b> In year 2015, 378 out of 1537 victims murdered by police officers in the US were Blacks. This group,
+            from the website, with which I created some visualization, which are intended to make people know what happened 
+            in 2015, reflect on those tragedies, and look to the future with plans. <!--plan is not a good word here-->
+            
+        <div id = "month"></div>
+
+        <u>
+            <h2>African Americans are overrepresented in police killing victims</h2> 
+        </u>
+            <div class="race" id="race"></div>
+                <p><b>The Story:</b> In year 2015, 378 out of 1537 victims murdered by police officers in the US were Blacks. This group,
                         however, only represented 13ish % of the nation's population. Comparatively, half of the victims were
                         Whites, the racial group that accounted for over 70% of the population. Police officers disproportionately 
                         killed racial minorities (with the exception of Asian), but why?
-                    </p>
-                    <p><b>Why vertical bar chart?</b>: A bar chart is a solid choice to display information about groups.
+                </p>
+                <p><b>Why vertical bar chart?</b>: A bar chart is a solid choice to display information about groups.
                         For this plot, I have one single mission in mind when creating it: showing the number of police
                         killings by race. This make a horizontal/vertical bar chart appropriate (not the former because
                         the number of categories is few). 
-                    </p>
-                    <p><b>Data points:</b> variable Race </p> <p><b>Supplementary information:</b> adding sex/state would be great</p>
-                </div>
-            </div>
-        <h2>Officers in xxx state killed the most people with mental disabilities</h2>
+                </p>
+                <p><b>Data points:</b> Race </p> 
+                <p><b>Supplementary information:</b> I would want to filter down by age, sex, or mental health condition and recreate this graph</p>
+                
 
-        <div id="state_plus_mental_stacked"></div>
-            <p><b>Narrative:</b> In 2015, around xxx percent of people murdered by police officers in the state of xxx had some degrees
-            of mental disabilities. </p>
-            <p><b>Why stacked bar chart?</b>: To show proportion of different categories (mental disabilities) by another categorical variable (in this case, state).
-            As for this plot, a divergent bar chart wpi;dalso makes sense</p>
-            <p><b>Data points:</b> state, mental_illness</p> <p><b>Supplementary information:</b> how to build interactions?</p>
-        </div>
-        <h2>Something</h2>
-            <p id="armed"></p>
+        <u>
+            <h2>Being armed is a less significant factor for Blacks than Whites</h2>
+        </u>
+
+        <div id="race_weapon_cleverland"></div>
+            <p><b>The Story:</b> In 2015, the majority of victims murdered by police officers in the US were armed during their confrontation with officers, but the gap varies for different racial groups.
+                For Whites and Hispanics, being armed was a significant factor that caused them being shot. It is less so for Blacks for which the difference is smaller in numbers. The distance is tiny for Asians or other
+                racial groups.
+            </p>
+            <p><b>Why Clerkland dot chart?</b>: A Clerkland dot chart is a variation of the lollipop chart, which is a variation of the bar chart. 
+            This chart is said to come from Tufte. It is best used to present the difference in values between categories or over a time frame, which makes it
+            appropriate for my emphasis on the armed vs unarmed divide in victim numbers. Codes are adapted from a tutorial on D3 website (<a href="https://d3-graph-gallery.com/graph/lollipop_cleveland.html">here</a>).
+            Note that the dot to the righter side refers to the armed category, wheres the dot to the left is the unarmed one (so it matched the title). 
+        </p>
+            <p><b>Data points:</b> race, weapon (weapons can be guns, rifles, or other weapons, for example, knives)</p> 
+            <p><b>Supplementary information:</b> It would be interesting to further break down by state or age group and see if the gap still persists.</p>
+        
+        <u>
+            <h2>Most victims of police shooting were in age 20-40 and without mental problem</h2>
+        </u>
+
+        <div id="age_mental"></div>
+            <p><b>The Story:</b> Most of people who were killed police officers in 2015 did not have any mental issue, 
+                regardless of their age. This is especially the case for young and middle-aged people (under 30). Depending on the age, the proportion of people whose deaths were related to
+                their own mental problems could range from 10ish% to 30ish% with an average falling on 20%. Despite the rate may not be as high as we thought, mentality is undeniably a big issue 
+                as people who have mental problems often are also the population that is in low-income, without enough access to quality healthcare and education, live in segregated neighborhoods, 
+                and possess marginal or minority identities. When we consider these factors all together, the effect of intersectionality is huge. 
+            </p>
+            <p>
+                <b>Why horizontal stacked bar chart?</b>: A horizontal stacked bar chart puts numbers or proportions on the x axis, categories on the y axis, and use different colors to color filters
+                (additional categorical variable). It does two things: let people compare the sizes of a factor (the length of horizontal bars) and let people see the composition of another factor in this factor.
+                That is, it's the combination of a horizontal bar chart and a proportional bar chart. Since I am interested in knowing what percentage of victims in different ages had mental problems when them being shot, 
+                this is an ideal chart format.
+            </p>
+            <p><b>Data points: </b> age, mental_illness </p>
+            <p><b>Supplementary information:</b> It would be interesting to facet on race, sex, and other facors to understand the effect of mixed identites. It would also be interesting to add the overall US population data
+                on top of this one, so we can see if on a national scale, people with mental problems are more likely to be killed. 
+            </p>
+    </div>    
+
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="month.js"></script>
     <script src="race_bar.js"></script>
     <script src="state_mental_stacked.js"></script>
+    <script src="mental_weapon.js"></script>
 </body>
 </html>

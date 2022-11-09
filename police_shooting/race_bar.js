@@ -1,4 +1,5 @@
 d3.json('a3cleanedonly2015.json').then(data => { 
+  
 
     let race_sex_count = [
         {
@@ -97,11 +98,11 @@ d3.json('a3cleanedonly2015.json').then(data => {
             "Totals": 0
         },
         {
-            "Race": "Asian",
+            "Race": "Hispanic",
             "Totals": 0
         },
         {
-            "Race": "Hispanic",
+            "Race": "Asian",
             "Totals": 0
         },
         {
@@ -115,25 +116,24 @@ d3.json('a3cleanedonly2015.json').then(data => {
             race_count[0].Totals += 1
         } else if (d.Race == "Black") {
             race_count[1].Totals += 1
-        } else if (d.Race == "Asian") {
-            race_count[2].Totals += 1
         } else if (d.Race == "Hispanic") {
+            race_count[2].Totals += 1
+        } else if (d.Race == "Asian") {
             race_count[3].Totals += 1
         } else {
             race_count[4].Totals += 1
         }
     } 
 
-   // console.log(race_count)   // total: 1537, white 751, black 378, hispnic 246, asian 19 ...
+    console.log(race_count)   // total: 1537, white 751, black 378, hispnic 246, asian 19 ...
 
     let race_chart = BarChart(race_count, {
         x: d => d.Race,
         y: d => d.Totals,
         xDomain: d3.groupSort(race_count, ([d]) => -d.Totals, d => d.Race), // sort by descending frequency
        // yFormat: "%",
-       title: "African Americans ",
         yLabel: "",
-        width: 750,
+        width: 640,
         height: 500,
         color: "steelblue"
       })
@@ -151,7 +151,7 @@ function BarChart(data, {
     title, // given d in data, returns the title text
     marginTop = 30, // the top margin, in pixels
     marginRight = 10, // the right margin, in pixels
-    marginBottom = 30, // the bottom margin, in pixels
+    marginBottom = 22, // the bottom margin, in pixels
     marginLeft = 40, // the left margin, in pixels
     width = 640, // the outer width of the chart, in pixels
     height = 400, // the outer height of the chart, in pixels
@@ -196,7 +196,7 @@ function BarChart(data, {
         .call(g => g.select(".domain").remove())
         .call(g => g.selectAll(".tick line").clone()
             .attr("x2", width - marginLeft - marginRight)
-            .attr("stroke-opacity", 0.1))
+            .attr("stroke-opacity", 0.25))
         .call(g => g.append("text")
             .attr("x", -marginLeft)
             .attr("y", 10)
@@ -218,11 +218,11 @@ function BarChart(data, {
     //    .text(title);
 
     svg.append("text") // add title
-        .attr("x", width / 2) // x location 
+        .attr("x", width / 1.9) // x location 
         .attr("y", (marginTop / 3) * 1.5) // y location
         .attr("text-anchor", "middle")
-        .text("Figure 2: A quarter of police killing victims in 2015 were Blacks") // title
-        .style("font-size", "18px") // title font
+        .text("Fig 1: Number of police killing victims in each racial group") // title
+        .style("font-size", "20px") // title font
       //  .style("font-weight", "bold")
   
     svg.append("g")
