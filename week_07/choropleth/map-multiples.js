@@ -14,7 +14,7 @@ Promise.all([
   d3.json("libs/counties-albers-10m.json")
 ]).then(([data, us]) => {
   counties = topojson.feature(us, us.objects.counties);
-  createChart(data, "2018", '#row1');  // createChart: function defined below
+  createChart(data, "2018", '#row1');
   createChart(data, "2019", '#row1');
   createChart(data, "2020", '#row2');
   createChart(data, "2021", '#row2');

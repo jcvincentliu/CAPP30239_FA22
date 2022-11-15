@@ -27,9 +27,8 @@ Promise.all([
   // Quantize evenly breakups domain into range buckets
   const color = d3.scaleQuantize()
     .domain([0, 10]).nice()
-    .range(['#aaa', '#bbb', '#ccc', '#ddd', '#eee', '#f7f7f7', '#d8daeb', '#b2abd2', '#8073ac']); //not as a d3 scheme but as an array
+    .range(['#aaa', '#bbb', '#ccc', '#ddd', '#eee', '#f7f7f7', '#d8daeb', '#b2abd2', '#8073ac']);
     // .range(d3.schemePuOr[9]); // Alternative color scheme https://observablehq.com/@d3/color-schemes
-    //9: number of colors to give to
 
   const path = d3.geoPath();
 

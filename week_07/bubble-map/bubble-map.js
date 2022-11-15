@@ -16,13 +16,13 @@ Promise.all([
   d3.json("chicago.json")
 ]).then(([data, chicagoTopology]) => {
 
-  const radius = d3.scaleLinear() // radius of the circle (o - the max of crime density)
+  const radius = d3.scaleLinear()
     .domain([0, d3.max(Object.values(data), d => d.crimeDensity)])
-    .range([0, 25]); // arbitarily selected
+    .range([0, 25]);
 
-  const communities = topojson.feature(chicagoTopology, chicagoTopology.objects.chicago); 
+  const communities = topojson.feature(chicagoTopology, chicagoTopology.objects.chicago);
   const mesh = topojson.mesh(chicagoTopology, chicagoTopology.objects.chicago);
-  const projection = d3.geoAlbers() // projections are how to a country/... is displayed
+  const projection = d3.geoMercator()
     .fitSize([width, height], mesh);
   const path = d3.geoPath().projection(projection);
 
@@ -39,10 +39,10 @@ Promise.all([
     .data(communities.features)
     .join("circle")
     .attr("stroke", '#ccc')
-    .attr("fill", "#f00")
+    .attr("fill", "brown")
     .attr("opacity", 0.75)
     .attr("r", d => radius(data[d.properties.area_numbe].crimeDensity))
-    .attr("transform", d => `translate(${path.centroid(d)})`) // move things around; centroid: to put dots on the center
+    .attr("transform", d => `translate(${path.centroid(d)})`)
     .on("mousemove", function (event, d) {
       let community = d.properties.community;
       let stats = data[d.properties.area_numbe];
@@ -58,6 +58,6 @@ Promise.all([
     })
     .on("mouseout", function () {
       tooltip.style("visibility", "hidden");
-      d3.select(this).attr("fill", '#f00');
+      d3.select(this).attr("fill", 'brown');
     });
 });
