@@ -1,6 +1,6 @@
 
 // 93 cases were dropped due to unspecified race
-
+  
 let height = 500,
     width = 800,
     margin = ({ top: 10, right: 36, bottom: 20, left: 30 })

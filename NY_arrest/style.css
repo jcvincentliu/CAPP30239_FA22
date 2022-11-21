@@ -37,7 +37,7 @@
   .flex-container {
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
+    flex-wrap: nowrap; 
     justify-content: normal;
     align-items: normal;
     align-content: normal;
@@ -59,7 +59,7 @@
     float: left;
     width: 50%;
   }
-  
+
   #month text {
     font-size: 14px;
     text-transform: capitalize;
