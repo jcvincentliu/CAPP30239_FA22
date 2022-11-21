@@ -1,0 +1,52 @@
+[{
+    "race": "White",
+    "values": [
+      {
+        "weapon": "Unarmed",
+        "count": 948
+      },
+      {
+      "weapon": "With a gun or riffle",
+      "count": 49
+      },
+      {
+      "weapon": "With another weapon",
+      "count": 220
+      }
+    ]
+  },
+  {
+      "race": "Black",
+      "values": [
+        {
+          "weapon": "Unarmed",
+          "count": 973
+        },
+        {
+        "weapon": "With a gun or riffle",
+        "count": 108
+        },
+        {
+        "weapon": "With another weapon",
+        "count": 239
+        }
+      ]
+    },
+    {
+      "race": "Other",
+      "values": [
+        {
+          "weapon": "Unarmed",
+          "count": 39
+        },
+        {
+        "weapon": "With a gun or riffle",
+        "count": 4
+        },
+        {
+        "weapon": "With another weapon",
+        "count": 10
+        }
+      ]
+    }
+    ]

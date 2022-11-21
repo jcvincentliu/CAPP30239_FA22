@@ -1,0 +1,13 @@
+sex,offense,count,percent
+All,Aggravated Assault,2009,77.6%
+All,Robbery,474,18.3%
+All,Rape,63,2.4%
+All,Murder and Nonnegligent Manslaughter,44,1.7%
+Male,Aggravated Assault,1591,75.87%
+Female,Aggravated Assault,418,84.79%
+Male,Robbery,407,19.41%
+Female,Robbery,67,13.59%
+Male,Rape,61,2.91%
+Male,Murder and Nonnegligent Manslaughter,38,1.81%
+Female,Murder and Nonnegligent Manslaughter,6,1.22%
+Female,Rape,2,0.41%
