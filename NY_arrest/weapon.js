@@ -11,7 +11,7 @@ d3.json('data/weapon.json').then((data) => {
       width = 200,
       innerRadius = 40,
       outerRadius = 65,
-      labelRadius = 90;
+      labelRadius = 85;
   
     const arcs = d3.pie().value(d => d.count)(values);
   

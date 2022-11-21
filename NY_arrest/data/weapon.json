@@ -33,19 +33,36 @@
       ]
     },
     {
+      "race": "Asian",
+      "values": [
+        {
+          "weapon": "Unarmed",
+          "count": 23
+        },
+        {
+        "weapon": "With a gun or riffle",
+        "count": 1
+        },
+        {
+        "weapon": "With another weapon",
+        "count": 9
+        }
+      ]
+    },
+    {
       "race": "Other",
       "values": [
         {
           "weapon": "Unarmed",
-          "count": 39
+          "count": 16
         },
         {
         "weapon": "With a gun or riffle",
-        "count": 4
+        "count": 3
         },
         {
         "weapon": "With another weapon",
-        "count": 10
+        "count": 1
         }
       ]
     }
