@@ -1,5 +1,5 @@
 
-// 93 cases were dropped due to unspecified race
+// Note: 93 cases were dropped due to unspecified race
   
 let height = 500,
     width = 800,
@@ -18,12 +18,8 @@ d3.csv("data/month_by_race.csv").then(data => {
   for (let d of data) {
     d.month = timeParse(d.month);
     d.count = +d.count;
- //   d.race = +d.race; 
     races.add(d.race);
   }
-  console.log(data)
-
-// ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
   let x = d3.scaleTime()
     .domain(d3.extent(data, d => d.month))
@@ -51,7 +47,7 @@ d3.csv("data/month_by_race.csv").then(data => {
 
     let g = svg.append("g")
       .attr("class", "race")
-      .on('mouseover', function () {   // dynamic part
+      .on('mouseover', function () {   
         d3.selectAll(".highlight").classed("highlight", false);
         d3.select(this).classed("highlight", true);
       });
@@ -95,6 +91,5 @@ d3.csv("data/month_by_race.csv").then(data => {
 
   }
 
-  
   
 });
