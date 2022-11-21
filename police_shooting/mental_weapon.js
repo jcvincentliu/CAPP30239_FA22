@@ -91,7 +91,7 @@ for (let d of data) {
         xLabel: "",
         width: 660,
         height: 500,
-        colors: ["#8856a7", "#2c7fb8"]
+        colors: ["#fdcdac", "#a6cee3"]
       });
 
     document.getElementById("age_mental").appendChild(race_chart);

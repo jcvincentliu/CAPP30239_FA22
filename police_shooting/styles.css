@@ -1,8 +1,14 @@
 * {
     font-family: 'Work Sans',Arial, Helvetica, sans-serif;
-    background-color:slategrey;
+    background-color:snow;
     font-size:medium;
     
+  }
+
+.container {
+    max-width: 900px;
+    padding: 20px;
+    margin: 0 auto;
   }
 
 H1 { text-align: center;
@@ -11,13 +17,6 @@ H1 { text-align: center;
 }
 
 H2 {font-size: 1.5em;}
-
-.narrative {
-    margin-top: 1.5cm;
-    margin-left: 3cm;
-    margin-right: 3cm;
-    margin-bottom: 2cm;
-}
 
 /* (in .narrative) max-width: 1300px;
     height: 1400px; */
@@ -30,6 +29,7 @@ H2 {font-size: 1.5em;}
 .narrative .race_narrative {
     margin-left: ;
 } */
+
 
 .float-container {
     border: 0px;

@@ -1,7 +1,7 @@
 
 const width = 540,
       height = 440,
-      margin = {top: 30, right: 10, bottom: 30, left: 92};
+      margin = {top: 10, right: 10, bottom: 30, left: 92};
 
 const dot_chart = d3.select("#race_weapon_cleverland")
   .append("svg")
@@ -131,19 +131,4 @@ var y = d3.scaleBand()
       .data(["Unarmed", "Armed"])
       .join("g")
       .attr("class", "legend-group");
-
-  const dot_colors =  d3.scaleOrdinal(["Unarmed", "Armed"], ["#a2d4ec","#12719e"])
-
-  legendGroup
-      .append("circle")
-      .attr("cx", (d, i) => (400 + (i * 80)))
-      .attr("cy",300)
-      .attr("r", 8)
-      .attr("fill", (d, i) => dot_colors(i));
-  
-    legendGroup
-      .append("text")
-      .attr("x", (d, i) => (390 + (i * 75)))
-      .attr("y",330)
-      .text((d, i) => ["Unarmed  ", "  Armed"][i]); 
 })
