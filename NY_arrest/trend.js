@@ -89,13 +89,13 @@ d3.csv("data/month_by_race.csv").then(data => {
       .attr("dominant-baseline", "middle")
       .attr("fill", "black");
 
-    svg.append("text")
-      .text("Note: 93 arrests did not come with racial information and are not used in the graph")
-      .attr("class", "label")
-      .attr("x", 0)
-      .attr("y", 550)
-      .attr("dominant-baseline", "middle")
-      .attr("fill", "black");
+    // svg.append("text")
+    //   .text("Note: 93 arrests did not come with racial information and are not used in the graph")
+    //   .attr("class", "label")
+    //   .attr("x", 0)
+    //   .attr("y", 550)
+    //   .attr("dominant-baseline", "middle")
+    //   .attr("fill", "black");
 
   }
 

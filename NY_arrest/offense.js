@@ -13,7 +13,7 @@ for (let d of data) {
     data.sort((a, b) => b.count - a.count); // sort from the highest to the lowest
     //sort by country: data.sort(a,b) => 
 
-    const height = 600,
+    const height = 500,
           width = 800,
           margin = ({ top: 10, right: 30, bottom: 35, left: 60 });
 
@@ -71,7 +71,7 @@ for (let d of data) {
 
 
 
-
+ // https://jsfiddle.net/matehu/w7h81xz2/
 // const bar = d3.select('svg');
 // const svgContainer = d3.select('#offense_bar');
     
