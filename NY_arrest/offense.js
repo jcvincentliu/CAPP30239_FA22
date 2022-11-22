@@ -15,7 +15,7 @@ for (let d of data) {
 
     const height = 500,
           width = 800,
-          margin = ({ top: 10, right: 30, bottom: 35, left: 60 });
+          margin = ({ top: 10, right: 10, bottom: 35, left: 60 });
 
     let svg = d3.select("#offense_bar")
         .append("svg")
@@ -32,16 +32,20 @@ for (let d of data) {
 
     const xAxis = g => g  
         .attr("transform", `translate(0, ${height - margin.bottom +5})`)
-        .call(d3.axisBottom(x)); 
+        .call(d3.axisBottom(x).tickSizeInner(0)); 
 
     const yAxis = g => g 
         .attr("transform", `translate(${margin.left -5}, 0)`)
-        .call(d3.axisLeft(y).ticks(8))
+     //   .attr("class", "y-axis")
+        .call(d3.axisLeft(y).ticks(5))
 
     svg.append("g")
+            .attr("class", "x-axis")
+
             .call(xAxis);
 
-    svg.append("g")       
+    svg.append("g")     
+            .attr("class", "y-axis")
             .call(yAxis);
 
     let bar = svg.selectAll(".bar")

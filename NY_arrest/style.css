@@ -8,9 +8,10 @@
     font-size: 10px;
   }
 
-  .chart p {
+  .chart .comparison {
+    font-size: small;
     background: #eee;
-    padding: 5px 0px 5px 10px;
+    padding: 5px 0px .5px 10px;
     margin-right: 10px;
   }
   
@@ -106,10 +107,26 @@
     fill: steelblue; 
     }
 
-#offense_bar text {
+  #offense_bar text {
     font-size: 16px;
 }
 
   #offense_bar .label text {  /*this is not working */
     font-size: 36px;
   } 
+
+  #offense_bar .x-axis path.domain{
+    display: none;
+  }
+
+  #offense_bar .y-axis path.domain{
+    display: none;
+  }
+
+  #state .y-axis path.domain{
+    display:none
+  }
+
+  /* #state .x-text  text{   
+    font-size: large;
+  } */  /*this is not working*/

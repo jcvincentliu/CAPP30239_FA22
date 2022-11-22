@@ -3,15 +3,18 @@
     "values": [
       {
         "weapon": "Unarmed",
-        "count": 948
+        "count": 948,
+        "percent": "78%"
       },
       {
       "weapon": "With a gun or riffle",
-      "count": 49
+      "count": 49,
+      "percent": "4%"
       },
       {
-      "weapon": "With another weapon",
-      "count": 220
+      "weapon": "Other",
+      "count": 220,
+      "percent":"18%"
       }
     ]
   },
@@ -20,15 +23,18 @@
       "values": [
         {
           "weapon": "Unarmed",
-          "count": 973
+          "count": 973,
+          "percent":"74%"
         },
         {
         "weapon": "With a gun or riffle",
-        "count": 108
+        "count": 108,
+        "percent":"8%"
         },
         {
-        "weapon": "With another weapon",
-        "count": 239
+        "weapon": "Other",
+        "count": 239,
+        "percent":"18%"
         }
       ]
     },
@@ -37,15 +43,18 @@
       "values": [
         {
           "weapon": "Unarmed",
-          "count": 23
+          "count": 23,
+          "percent":"70%"
         },
         {
         "weapon": "With a gun or riffle",
-        "count": 1
+        "count": 1,
+        "percent":"3%"
         },
         {
-        "weapon": "With another weapon",
-        "count": 9
+        "weapon": "Other",
+        "count": 9,
+        "percent":"27%"
         }
       ]
     },
@@ -54,15 +63,18 @@
       "values": [
         {
           "weapon": "Unarmed",
-          "count": 16
+          "count": 16,
+          "percent":"80%"
         },
         {
         "weapon": "With a gun or riffle",
-        "count": 3
+        "count": 3,
+        "percent":"15%"
         },
         {
-        "weapon": "With another weapon",
-        "count": 1
+        "weapon": "Other",
+        "count": 1,
+        "percent":"5%"
         }
       ]
     }

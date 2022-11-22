@@ -10,7 +10,7 @@ d3.json('data/weapon.json').then((data) => {
     const height = 250,
       width = 200,
       innerRadius = 40,
-      outerRadius = 65,
+      outerRadius = 60,
       labelRadius = 85;
   
     const arcs = d3.pie().value(d => d.count)(values);
@@ -45,7 +45,7 @@ d3.json('data/weapon.json').then((data) => {
       .attr("transform", d => `translate(${arcLabel.centroid(d)})`)
       .selectAll("tspan")
       .data(d => {
-        return [d.data.weapon, d.data.count];
+        return [d.data.weapon, d.data.count, d.data.percent]; //d.
       })
       .join("tspan")
       .attr("x", 0)

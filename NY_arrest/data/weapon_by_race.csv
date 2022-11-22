@@ -1,10 +1,13 @@
-weapon,race,count
-Unarmed,White,948
-Unarmed,Black,973
-Unarmed,other,39
-Firearm-related,White,49
-Firearm-related,Black,108
-Firearm-related,other,4
-Other weapon,White,220
-Other weapon,Black,239
-Other weapon,other,10
+race,weapon,count,percent
+White,Unarmed,948,0.779
+White,Firearm-related,49,0.0403
+White,Other weapon,220,0.1808
+Black,Unarmed,973,0.7371
+Black,Firearm-related,108,0.0818
+Black,Other weapon,239,0.1811
+Asian,Unarmed,23,0.697
+Asian,Firearm-related,1,0.0303
+Asian,Other weapon,9,0.2727
+American Indian or Pacific Islander,Unarmed,16,0.8
+American Indian or Pacific Islander,Firearm-related,3,0.15
+American Indian or Pacific Islander,Other weapon,1,0.05

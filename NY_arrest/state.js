@@ -12,11 +12,9 @@ d3.csv('data/violent_arrest_by_state_selected.csv').then((data) => {
         x: d => d.Percent,
         y: d => d.State,
         yDomain: d3.groupSort(data, ([d]) => -d.Percent, d => d.State), // sort by descending frequency
-        xFormat: ".2r",
-        xLabel: "Violent crime arrests per 10,000 people",
+        xLabel: "Number of violent crime arrests per 10,000 people",
         width: 600
-      //  color: "steelblue"
-    })
+   })
 
     document.getElementById("state").appendChild(arrest_state);
 
@@ -34,9 +32,9 @@ function BarChart(data, {
     title, // given d in data, returns the title text
     marginTop = 30, // the top margin, in pixels
     marginRight = 10, // the right margin, in pixels
-    marginBottom = 10, // the bottom margin, in pixels
-    marginLeft = 100, // the left margin, in pixels
-    width = 640, // the outer width of the chart, in pixels
+    marginBottom = 5, // the bottom margin, in pixels
+    marginLeft = 80, // the left margin, in pixels
+    width = 800, // the outer width of the chart, in pixels
     height = 450, // outer height, in pixels
     xType = d3.scaleLinear, // type of x-scale
     xDomain, // [xmin, xmax]
@@ -54,7 +52,7 @@ function BarChart(data, {
     const X = d3.map(data, x);
     const Y = d3.map(data, y);
 
-    console.log(Y)
+   // console.log(Y)
   
     // Compute default domains, and unique the y-domain.
     if (xDomain === undefined) xDomain = [0, d3.max(X)];
@@ -63,7 +61,7 @@ function BarChart(data, {
   
     // Omit any data not present in the y-domain.
     const I = d3.range(X.length).filter(i => yDomain.has(Y[i]));
-    console.log(I)
+   // console.log(I)
   
     // Compute the default height.
     if (height === undefined) height = Math.ceil((yDomain.size + yPadding) * 25) + marginTop + marginBottom;
@@ -72,12 +70,12 @@ function BarChart(data, {
     // Construct scales and axes.
     const xScale = xType(xDomain, xRange);
     const yScale = d3.scaleBand(yDomain, yRange).padding(yPadding);
-    const xAxis = d3.axisTop(xScale).ticks(width / 80, xFormat);
+    const xAxis = d3.axisTop(xScale).ticks(width / 80);
     const yAxis = d3.axisLeft(yScale).tickSizeOuter(0);
   
 
-      const formatValue = xScale.tickFormat(100, xFormat);
-      title = i => `${formatValue(X[i])}`;
+    //  const formatValue = xScale.tickFormat(100, xFormat);
+      title = i => `${X[i]}`;
 
   
     const svg = d3.create("svg")
@@ -94,33 +92,26 @@ function BarChart(data, {
             .attr("y2", height - marginTop - marginBottom)
             .attr("stroke-opacity", 0.1))
         .call(g => g.append("text")
+            .attr("class", "x-text")
             .attr("x", marginLeft+350)  // width - marginRight
             .attr("y", -22)
             .attr("fill", "currentColor")
             .attr("text-anchor", "end")
             .text(xLabel))
-          //  .style("font-size", "30px")
             .attr("font-weight", 700);
   
-    svg.append("g")
+    svg.append("g")   
+      .selectAll("rect")
+      .data(I)
+      .join("rect")
         .attr("fill", function(d) {
-            if (Y == "New York") {  
-                return "red"
+       //     console.log(d, data)
+            if (data[d].State === "New York") {  
+                return "#850101"
             }   else    { 
             return "steelblue" 
                 } 
             })
-      .selectAll("rect")
-      .data(I)
-/*function(d) {
-        if (I == 9) {  
-            return "red"
-        }   else    { 
-        return "steelblue" 
-            } 
-        }*/
-        
-      .join("rect")
         .attr("x", xScale(0))
         .attr("y", i => yScale(Y[i]))
         .attr("width", i => xScale(X[i]) - xScale(0))
@@ -146,7 +137,8 @@ function BarChart(data, {
   
     svg.append("g")
         .attr("transform", `translate(${marginLeft},0)`)
-        .call(yAxis);
+        .attr("class", "y-axis")
+        .call(yAxis.tickSizeInner(0));
   
     return svg.node();
   }
