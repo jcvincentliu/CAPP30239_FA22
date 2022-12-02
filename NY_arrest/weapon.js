@@ -11,7 +11,7 @@ d3.json('data/weapon.json').then((data) => {
       width = 200,
       innerRadius = 40,
       outerRadius = 60,
-      labelRadius = 85;
+      labelRadius = 88;
   
     const arcs = d3.pie().value(d => d.count)(values);
   
@@ -34,7 +34,19 @@ d3.json('data/weapon.json').then((data) => {
       .data(arcs)
       .join("path")
       .attr("fill", (d, i) => d3.schemeSet2[i])
-      .attr("d", arc);
+      .attr("d", arc)
+      .on('mouseover', function () {
+        d3.selectAll(".highlight").classed("highlight", false);
+        d3.select(this).classed("highlight", true);
+        d3.select(this).attr("stroke", (d, i) => d3.schemeSet2[i])
+        d3.select(this).attr("transform", "scale(1.1)")
+       // d3.select(this).style("font-size", "15px")
+      })
+      .on("mouseout", function () {
+        d3.select(this).classed("highlight", false)
+        d3.select(this).attr("stroke", "white")
+        d3.select(this).attr("transform", "scale(1)")
+      });
   
     svg.append("g")
       .attr("font-size", 10)
@@ -51,7 +63,14 @@ d3.json('data/weapon.json').then((data) => {
       .attr("x", 0)
       .attr("y", (d, i) => `${i * 1.1}em`)
       .attr("font-weight", (d, i) => i ? null : "bold")
-      .text(d => d);
+      .text(d => d)
+      // .on('mouseover', function () {
+      //     d3.select(this).attr("font-size", 15)
+      // })
+      // .on("mouseout", function () {
+      //   d3.select(this).attr("font-size", 10)
+      // })
+      ;
   
     svg.append("text")
       .attr("font-size", 16)

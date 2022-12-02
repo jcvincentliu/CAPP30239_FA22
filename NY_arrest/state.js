@@ -11,6 +11,7 @@ d3.csv('data/violent_arrest_by_state_selected.csv').then((data) => {
     let arrest_state = BarChart(data, {
         x: d => d.Percent,
         y: d => d.State,
+        z: d => d.Count,
         yDomain: d3.groupSort(data, ([d]) => -d.Percent, d => d.State), // sort by descending frequency
         xLabel: "Number of violent crime arrests per 10,000 people",
         width: 600
@@ -29,8 +30,9 @@ d3.csv('data/violent_arrest_by_state_selected.csv').then((data) => {
 function BarChart(data, {
     x = d => d, // given d in data, returns the (quantitative) x-value
     y = (d, i) => i, // given d in data, returns the (ordinal) y-value
+    z = d => d,
     title, // given d in data, returns the title text
-    marginTop = 30, // the top margin, in pixels
+    marginTop = 50, // the top margin, in pixels
     marginRight = 10, // the right margin, in pixels
     marginBottom = 5, // the bottom margin, in pixels
     marginLeft = 80, // the left margin, in pixels
@@ -51,6 +53,7 @@ function BarChart(data, {
     // Compute values.
     const X = d3.map(data, x);
     const Y = d3.map(data, y);
+    const Z  = d3.map(data, z);
 
    // console.log(Y)
   
@@ -73,9 +76,13 @@ function BarChart(data, {
     const xAxis = d3.axisTop(xScale).ticks(width / 80);
     const yAxis = d3.axisLeft(yScale).tickSizeOuter(0);
   
+    const tooltip = d3.select('#state')
+        .append("div")
+        .attr("class", "tooltip")
+        .style("position", "absolute") // put item on specific spot (0,0); position relative --> move in relation to sth
+        .style("visibility", "hidden")
 
-    //  const formatValue = xScale.tickFormat(100, xFormat);
-      title = i => `${X[i]}`;
+    title = i => `${X[i]}`;
 
   
     const svg = d3.create("svg")
@@ -93,19 +100,18 @@ function BarChart(data, {
             .attr("stroke-opacity", 0.1))
         .call(g => g.append("text")
             .attr("class", "x-text")
-            .attr("x", marginLeft+350)  // width - marginRight
-            .attr("y", -22)
+            .attr("x", marginLeft+300)  
+            .attr("y", -35)
             .attr("fill", "currentColor")
-            .attr("text-anchor", "end")
-            .text(xLabel))
-            .attr("font-weight", 700);
+            .attr("text-anchor", "end")    
+            .style("font-size", "15px")
+            .text(xLabel));
   
     svg.append("g")   
       .selectAll("rect")
       .data(I)
       .join("rect")
         .attr("fill", function(d) {
-       //     console.log(d, data)
             if (data[d].State === "New York") {  
                 return "#850101"
             }   else    { 
@@ -115,7 +121,15 @@ function BarChart(data, {
         .attr("x", xScale(0))
         .attr("y", i => yScale(Y[i]))
         .attr("width", i => xScale(X[i]) - xScale(0))
-        .attr("height", yScale.bandwidth());
+        .attr("height", yScale.bandwidth())
+        .on("mousemove", function(event, d){
+            tooltip
+              .style("left", (event.pageX +30) + "px") 
+              .style("top", (event.pageY -60) + "px")
+              .style("visibility", "visible")
+              .html("<b>State</b>: " + (Y[d]) + "<br>" + "<b>Total violent arrests case counts</b>: " + (Z[d]) + "<br>" + "<b>Number of violent arrests per 10,000 people</b>: " + (X[d]))
+        })
+    	.on("mouseout", function(d){ tooltip.style("visibility", "hidden");});
   
     svg.append("g")
         .attr("fill", titleColor)

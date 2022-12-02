@@ -60,7 +60,7 @@ d3.csv("data/month_by_race.csv").then(data => {
       .datum(monthrace)
       .attr("fill", "none")
       .attr("stroke", "darkgrey")
-      .style("stroke-width", 2.5) 
+      .style("stroke-width", 3) 
       .attr("d", line)
 
     let lastEntry = monthrace[monthrace.length - 1]; //last piece of data to position text x and y
@@ -68,6 +68,7 @@ d3.csv("data/month_by_race.csv").then(data => {
     svg.append("text")
       .text("All Races")
       .attr("class", "label")
+      .style("font-size", "18px")
       .attr("x", 596)
       .attr("y", 75)
       .attr("dominant-baseline", "middle")
@@ -76,6 +77,7 @@ d3.csv("data/month_by_race.csv").then(data => {
     svg.append("text")
       .text("Black")
       .attr("class", "label")
+      .style("font-size", "18px")
       .attr("x", 595)
       .attr("y", 260)
       .attr("dominant-baseline", "middle")
@@ -84,10 +86,32 @@ d3.csv("data/month_by_race.csv").then(data => {
     svg.append("text")
       .text("White")
       .attr("class", "label")
+      .style("font-size", "18px")
       .attr("x", 595)
       .attr("y", 330)
       .attr("dominant-baseline", "middle")
       .attr("fill", "black");
+    
+    svg.selectAll("#month")
+      .data(data)
+      .enter()
+      .append("circle")
+    //    .attr("class", "circle")
+        .attr("fill", "darkgrey")
+        .attr("stroke", "none")
+        .attr("cx", function(d) { return x(d.month) })
+        .attr("cy", function(d) { return y(d.count) })
+        .attr("r", 2)
+        .on('mouseover', function () {   
+      //    d3.selectAll(".highlight").classed("highlight", false);
+       //   d3.select(this).classed("highlight", true);
+          d3.select(this).attr("fill",  "steelblue");
+          d3.select(this).attr("r",  4);
+        })
+        .on("mouseout", function() {
+          d3.select(this).attr("fill",  "darkgrey");
+          d3.select(this).attr("r",  2);
+        })
 
     // svg.append("text")
     //   .text("Note: 93 arrests did not come with racial information and are not used in the graph")

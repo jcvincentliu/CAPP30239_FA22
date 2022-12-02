@@ -107,6 +107,14 @@
     fill: steelblue; 
     }
 
+    #month .highlight circle { 
+      fill: steelblue; 
+      }
+  
+ /* #month circle{
+    fill: steelblue;
+  } */
+
   #offense_bar text {
     font-size: 16px;
 }
@@ -123,10 +131,57 @@
     display: none;
   }
 
+  #offense_bar .tooltip {
+    border-radius: 8px;
+    position: absolute;
+    min-width: 80px;
+    height: auto;
+    background: white;
+    color: black;
+    font-size: 12px;
+    border: 1px solid blue;
+    padding: 14px;
+    visibility: hidden;
+    text-align: left;
+  }
+
+  #weapon_race path.highlight {
+    filter: drop-shadow(7px 11px 12px rgb(0 0 0 / 0.4))
+  }
+
   #state .y-axis path.domain{
     display:none
   }
 
-  /* #state .x-text  text{   
-    font-size: large;
-  } */  /*this is not working*/
+  #state text{
+    font-size: 12px;
+  }
+
+  #state .x-text text{
+    font-size: 20px;
+  }
+
+  #state .tooltip {
+    border-radius: 8px;
+    position: absolute;
+    min-width: 80px;
+    height: auto;
+/*    background: none repeat scroll 0 0 #f8f4f4; */
+    background: white;
+    color: black;
+    font-size: 12px;
+    border: 1px solid blue;
+    padding: 14px;
+    visibility: hidden;
+    text-align: left;
+  }
+
+
+
+/*
+
+filter 
+
+*/
+
+/* on mouseover, line 355 and 356 */
