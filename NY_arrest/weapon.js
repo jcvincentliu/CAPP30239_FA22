@@ -7,7 +7,7 @@ d3.json('data/weapon.json').then((data) => {
   });
   
   function createRing({ race, values}) {
-    const height = 250,
+    const height = 220,
       width = 200,
       innerRadius = 40,
       outerRadius = 60,
@@ -35,10 +35,10 @@ d3.json('data/weapon.json').then((data) => {
       .join("path")
       .attr("fill", (d, i) => d3.schemeSet2[i])
       .attr("d", arc)
-      .on('mouseover', function () {
+      .on('mouseover', function (e, d, i) {
         d3.selectAll(".highlight").classed("highlight", false);
         d3.select(this).classed("highlight", true);
-        d3.select(this).attr("stroke", (d, i) => d3.schemeSet2[i])
+        d3.select(this).attr("stroke", (d, i) => d3.schemeSet2[i]) // i is not working
         d3.select(this).attr("transform", "scale(1.1)")
        // d3.select(this).style("font-size", "15px")
       })

@@ -152,7 +152,12 @@ function BarChart(data, {
     svg.append("g")
         .attr("transform", `translate(${marginLeft},0)`)
         .attr("class", "y-axis")
-        .call(yAxis.tickSizeInner(0));
+        .call(yAxis.tickSizeInner(0)); 
+    
+    svg.select(".y-axis .tick:nth-child(7) text")
+      .text("New York")
+      .style("font-weight", "bold")
+      .style("font-size", "15px")
   
     return svg.node();
   }

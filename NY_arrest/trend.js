@@ -52,9 +52,9 @@ d3.csv("data/month_by_race.csv").then(data => {
         d3.select(this).classed("highlight", true);
       });
 
-    if (race === "All races") {
-      g.classed("highlight", true);
-    }
+    // if (race === "All races") {
+    //   g.classed("highlight", true);
+    // }
 
     g.append("path")
       .datum(monthrace)
@@ -62,6 +62,27 @@ d3.csv("data/month_by_race.csv").then(data => {
       .attr("stroke", "darkgrey")
       .style("stroke-width", 3) 
       .attr("d", line)
+
+    g.selectAll("circle")
+      .data(data)
+   //   .enter()
+      .join("circle")
+    //    .attr("class", "circle")
+        .attr("fill", "darkgrey")
+        .attr("stroke", "none")
+        .attr("cx", function(d) { return x(d.month) })
+        .attr("cy", function(d) { return y(d.count) })
+        .attr("r", 4)
+    //     .on('mouseover', function () {   
+    // //      d3.selectAll(".highlight").classed("highlight", false);
+    // //      d3.select(this).classed("highlight", true);
+    //       d3.select(this).attr("fill",  "steelblue");
+    //       d3.select(this).attr("r",  4);
+    //     })
+    //     .on("mouseout", function() {
+    //       d3.select(this).attr("fill",  "darkgrey");
+    //       d3.select(this).attr("r",  2);
+    //     })
 
     let lastEntry = monthrace[monthrace.length - 1]; //last piece of data to position text x and y
 
@@ -92,26 +113,6 @@ d3.csv("data/month_by_race.csv").then(data => {
       .attr("dominant-baseline", "middle")
       .attr("fill", "black");
     
-    svg.selectAll("#month")
-      .data(data)
-      .enter()
-      .append("circle")
-    //    .attr("class", "circle")
-        .attr("fill", "darkgrey")
-        .attr("stroke", "none")
-        .attr("cx", function(d) { return x(d.month) })
-        .attr("cy", function(d) { return y(d.count) })
-        .attr("r", 2)
-        .on('mouseover', function () {   
-      //    d3.selectAll(".highlight").classed("highlight", false);
-       //   d3.select(this).classed("highlight", true);
-          d3.select(this).attr("fill",  "steelblue");
-          d3.select(this).attr("r",  4);
-        })
-        .on("mouseout", function() {
-          d3.select(this).attr("fill",  "darkgrey");
-          d3.select(this).attr("r",  2);
-        })
 
     // svg.append("text")
     //   .text("Note: 93 arrests did not come with racial information and are not used in the graph")
