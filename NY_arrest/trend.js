@@ -36,56 +36,45 @@ d3.csv("data/month_by_race.csv").then(data => {
   svg.append("g")
     .attr("transform", `translate(${margin.left},0)`)
     .attr("class", "y-axis")
-    .call(d3.axisLeft(y).ticks(8).tickSize(-innerWidth).tickFormat(d => d));  // number is the #ticks8
+    .call(d3.axisLeft(y).ticks(8).tickSize(-innerWidth).tickFormat(d => d));  
 
   let line = d3.line()
     .x(d => x(d.month))
     .y(d => y(d.count));
+
+
+    for (let race of races) {
+      let monthrace = data.filter(d => d.race === race);  // filtering 
+      buildLine(monthrace);
+
+    }
+  
+    function buildLine(monthrace){
+
+      let g = svg.append("g")
+        .attr("class", "race")
+        .on('mouseover', function () {   
+          d3.selectAll(".highlight").classed("highlight", false);
+          d3.select(this).classed("highlight", true);
+        });
+  
+      g.append("path")
+        .datum(monthrace)
+        .attr("fill", "none")
+        .attr("stroke", "darkgrey")
+        .style("stroke-width", 3) 
+        .attr("d", line)
+  
+      g.selectAll("circle")
+        .data(monthrace)
+        .join("circle")
+          .attr("fill", "darkgrey")
+          .attr("stroke", "none")
+          .attr("cx", function(d) { return x(d.month) })
+          .attr("cy", function(d) { return y(d.count) })
+          .attr("r", 4);
+      }
  
-  for (let race of races) {
-    let monthrace = data.filter(d => d.race === race);  // filtering 
-
-    let g = svg.append("g")
-      .attr("class", "race")
-      .on('mouseover', function () {   
-        d3.selectAll(".highlight").classed("highlight", false);
-        d3.select(this).classed("highlight", true);
-      });
-
-    // if (race === "All races") {
-    //   g.classed("highlight", true);
-    // }
-
-    g.append("path")
-      .datum(monthrace)
-      .attr("fill", "none")
-      .attr("stroke", "darkgrey")
-      .style("stroke-width", 3) 
-      .attr("d", line)
-
-    g.selectAll("circle")
-      .data(data)
-   //   .enter()
-      .join("circle")
-    //    .attr("class", "circle")
-        .attr("fill", "darkgrey")
-        .attr("stroke", "none")
-        .attr("cx", function(d) { return x(d.month) })
-        .attr("cy", function(d) { return y(d.count) })
-        .attr("r", 4)
-    //     .on('mouseover', function () {   
-    // //      d3.selectAll(".highlight").classed("highlight", false);
-    // //      d3.select(this).classed("highlight", true);
-    //       d3.select(this).attr("fill",  "steelblue");
-    //       d3.select(this).attr("r",  4);
-    //     })
-    //     .on("mouseout", function() {
-    //       d3.select(this).attr("fill",  "darkgrey");
-    //       d3.select(this).attr("r",  2);
-    //     })
-
-    let lastEntry = monthrace[monthrace.length - 1]; //last piece of data to position text x and y
-
     svg.append("text")
       .text("All Races")
       .attr("class", "label")
@@ -112,17 +101,6 @@ d3.csv("data/month_by_race.csv").then(data => {
       .attr("y", 330)
       .attr("dominant-baseline", "middle")
       .attr("fill", "black");
-    
-
-    // svg.append("text")
-    //   .text("Note: 93 arrests did not come with racial information and are not used in the graph")
-    //   .attr("class", "label")
-    //   .attr("x", 0)
-    //   .attr("y", 550)
-    //   .attr("dominant-baseline", "middle")
-    //   .attr("fill", "black");
-
-  }
-
   
-});
+
+  });

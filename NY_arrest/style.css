@@ -111,18 +111,11 @@
     #month .highlight circle { 
       fill: steelblue; 
       }
-  
- /* #month circle{
-    fill: steelblue;
-  } */
+
 
   #offense_bar text {
     font-size: 16px;
 }
-
-  #offense_bar .label text {  /*this is not working */
-    font-size: 36px;
-  } 
 
   #offense_bar .x-axis path.domain{
     display: none;
@@ -167,7 +160,6 @@
     position: absolute;
     min-width: 80px;
     height: auto;
-/*    background: none repeat scroll 0 0 #f8f4f4; */
     background: white;
     color: black;
     font-size: 12px;
@@ -176,13 +168,3 @@
     visibility: hidden;
     text-align: left;
   }
-
-
-
-/*
-
-filter 
-
-*/
-
-/* on mouseover, line 355 and 356 */

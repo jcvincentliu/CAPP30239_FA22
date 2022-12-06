@@ -80,22 +80,4 @@ for (let d of data) {
         .attr('text-anchor', 'middle')
         .style('fill', 'black');
 
-    // var mouseover = function(d) {
-    //         tooltip
-    //             .html("subgroup: " + d.data[offense] + "<br>" + "Value: " + d.data[count])
-    //             .style("opacity", 1)
-    //       }
-
-    // var mousemove = function(e,d) {
-    //         tooltip
-    //           .style("left", (d3.mouse(this)[0]+90) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
-    //           .style("top", (d3.mouse(this)[1]) + "px")
-    //       }
-
-    // var mouseleave = function(d) {
-    //         tooltip
-    //           .style("opacity", 0)
-    //       }
-        
-
     });
