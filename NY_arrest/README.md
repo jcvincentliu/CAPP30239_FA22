@@ -4,7 +4,7 @@
 ## Project Information
 The repository contains codes and data used for my class final project, which is a data storytelling report of New York violent crime arrests in 2021. Violent crime arrests refer to police arrests of people who committed one or more types of violent crimes - murder and nonnegligent manslaughter, rape, robbery, and aggravated assault. The idea originated from my early year's interections with ex-offenders in Minnesota during which I firsthand saw how police arrests and jail detentions could impact people. After doing some research, I noticed that very little study scoped on on violent crime arrests, which fostered my interest in studying this topic to fill this gap.  
 
-The completed data journalism project can be viewed at https://jcvincentliu.github.io/CAPP30239_FA22/NY_arrest/arrest.html. 
+The completed data journalism project can be viewed at https://jcvincentliu.github.io/CAPP30239_FA22/NY_arrest/arrest.html. A sketch can be seen at [screenshot](/NY_arrest/fig/final_project.png). 
 
 ## Data
 
